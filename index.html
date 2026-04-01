@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nadeem Swim | Master the Water | nadim.swim</title>
+    <style>
+        /* --- Brand Theme --- */
+        :root {
+            --primary-blue: #0056b3;
+            --light-blue: #e6f2ff;
+            --dark-blue: #003366;
+            --accent-blue: #00BFFF; 
+            --brand-yellow: #FFD700; 
+            --white: #ffffff;
+            --text-main: #333;
+            --text-light: #555;
+        }
+
+        /* --- Global Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: #f9fbfc; 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Navigation --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* --- Logo Styling --- */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Space between logo image and text */
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 45px; /* Adjusts the size of your uploaded wave image */
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo-title {
+            color: var(--dark-blue);
+            font-weight: 800;
+            font-size: 1.6rem;
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-subtitle {
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+            line-height: 1;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark-blue);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+            text-shadow: 0px 1px 0px var(--brand-yellow); 
+        }
+
+        /* --- Interactive Branded Buttons --- */
+        .btn-interactive {
+            background-color: var(--primary-blue); 
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px; 
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px; 
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-interactive:hover {
+            background-color: var(--dark-blue); 
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            height: 20px;
+        }
+
+        .btn-icon svg {
+            height: 100%;
+            width: auto;
+            fill: currentColor;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 80vh;
+            background-image: url('https://images.unsplash.com/photo-1519315901367-f34f91d575fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 5%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--dark-blue);
+            opacity: 0.75;
+        }
+
+        .hero h1, .hero p, .hero a {
+            position: relative; 
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Sections --- */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .programs-bg {
+            background-color: var(--light-blue);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--brand-yellow);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .expertise-grid, .programs-grid, .testimonials-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .expertise-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .programs-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .testimonials-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .expertise-card, .program-card, .testimonial-card {
+            background: var(--white); 
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .expertise-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .expertise-card:hover, .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .expertise-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- Programs Section --- */
+        .program-card {
+            overflow: hidden;
+        }
+
+        .program-img {
+            height: 200px;
+            background-color: #ccc;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        .program-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--dark-blue);
+            padding: 0.6rem 1.5rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonial-card {
+            font-style: italic;
+            padding: 2rem;
+            border-left: 5px solid var(--brand-yellow); 
+            text-align: left;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-weight: bold;
+            font-style: normal;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+        }
+
+        /* --- Floating Instagram Action Button --- */
+        .insta-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #E1306C; 
+            color: var(--white);
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 2px 4px 15px rgba(0,0,0,0.25);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .insta-float:hover {
+            transform: scale(1.1) rotate(5deg); 
+            background-color: #BC1888; 
+        }
+
+        .insta-icon {
+            width: 35px;
+            height: 35px;
+            fill: var(--white);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr; 
+            gap: 2rem; 
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+
+        .footer-col {
+            word-wrap: break-word; 
+        }
+
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-yellow); 
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col a:hover {
+            color: var(--brand-yellow); 
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr; 
+                gap: 3rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; 
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .insta-float {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="photos/logo.png" alt="Nadeem Swim School Logo" class="logo-img">
+            <div class="logo-text">
+                <div class="logo-title">nadeem</div>
+                <div class="logo-subtitle">swim school</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">Our Classes</a></li>
+            <li><a href="#programs">About Us</a></li>
+            <li><a href="#testimonials">Contact</a></li>
+        </ul>
+        <a href="https://wasap.my/60135912099/IG+Nadim+Swim" target="_blank" class="btn-interactive" role="button">
+            <div class="btn-icon">
+                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path>
+                </svg>
+            </div>
+            <span>Book a Trial</span>
+        </a>
+    </header>
+
+    <section class="hero">
+        <h1>Unleash Your Aquatic Potential</h1>
+        <p>Build confidence, master your technique, and swim with ease. Tailored swimming instruction for all ages and abilities.</p>
+        <a href="https://wasap.my/60135912099/IG+Nadim+Swim" target="_blank" class="btn-interactive" style="font-size: 1.1rem; padding: 0.8rem 2.5rem; background-color: var(--brand-yellow); color: var(--dark-blue);" role="button">
+            <div class="btn-icon" style="height: 25px;">
+                <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path>
+                </svg>
+            </div>
+            <span>Book Now</span>
+        </a>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Our Expertise</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h3>Water Phobia Experts</h3>
+                <p>Gentle, psychological approaches to help students permanently overcome their fear of deep water.</p>
+            </div>
+            <div class="expertise-card">
+                <h3>Technique Mastery</h3>
+                <p>Learn to swim further with the least amount of energy for a full-body, efficient aquatic workout.</p>
+            </div>
+            <div class="expertise-card">
+                <h3>Inclusive Coaching</h3>
+                <p>Personalized attention ensuring a safe, welcoming environment for learners of all physical abilities.</p>
+            </div>
+            <div class="expertise-card">
+                <h3>All Ages Welcome</h3>
+                <p>From young beginners building foundational skills to adults refining their competitive strokes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="section programs-bg">
+        <h2 class="section-title">Programmes</h2>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="program-content">
+                    <h3>Fast-Track Programme</h3>
+                    <p>Our flagship intensive course designed to take you from beginner to confident swimmer in record time.</p>
+                    <a href="https://wasap.my/60135912099/IG+Nadim+Swim" target="_blank" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="program-card">
+                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="program-content">
+                    <h3>Private Coaching (1-to-1)</h3>
+                    <p>Undivided attention for maximum progress. Perfect for highly specific goals or special needs learners.</p>
+                    <a href="https://wasap.my/60135912099/IG+Nadim+Swim" target="_blank" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="program-card">
+                <div class="program-img" style="background-image: url('https://images.unsplash.com/photo-1560090995-01632a28895b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="program-content">
+                    <h3>Competitive Stroke Clinic</h3>
+                    <p>Refine your form, increase your speed, and swim with the efficiency of a seasoned athlete.</p>
+                    <a href="https://wasap.my/60135912099/IG+Nadim+Swim" target="_blank" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <h2 class="section-title">Stories</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                "I used to have severe water phobia, but Nadeem Swim helped me overcome it. The best part is the patience and dedication the coaches show to every single student."
+                <div class="testimonial-author">- Jamie K.</div>
+            </div>
+            <div class="testimonial-card">
+                "I can confidently swim in the deepest part of the pool after just a few weeks. The systematic breakdown of techniques makes learning so much easier."
+                <div class="testimonial-author">- Gail E.</div>
+            </div>
+            <div class="testimonial-card">
+                "Thanks to the team for taking care of my son without compromising on the professional front. They made him completely comfortable in the water."
+                <div class="testimonial-author">- Arun C.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-container footer-logo">
+                    <img src="photos/logo.png" alt="Nadeem Swim School Logo" class="logo-img">
+                    <div class="logo-text">
+                        <div class="logo-title" style="color: var(--white);">nadeem</div>
+                        <div class="logo-subtitle" style="color: rgba(255,255,255,0.8);">swim school</div>
+                    </div>
+                </div>
+                
+                <p style="color: #ccc; margin: 1rem 0;">Discover Aquatic Mastery at nadim.swim.</p>
+                <a href="https://www.instagram.com/nadeem.swim?igsh=MXYzN2ZsZDA2MzU3cQ==" target="_blank" class="btn-secondary" style="background-color: transparent; border-color: var(--brand-yellow); color: var(--brand-yellow); margin-top: 10px;">View our Instagram</a>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">Our Classes</a></li>
+                    <li><a href="#programs">About Us</a></li>
+                    <li><a href="#testimonials">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <ul>
+                    <li>WhatsApp: <a href="https://wasap.my/60135912099/IG+Nadim+Swim" target="_blank" style="color: var(--white); text-decoration: underline;">+60 13-591 2099</a></li>
+                    <li>Hours: Mon-Sun</li>
+                    <li>8:00 AM – 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Nadeem Swim School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://www.instagram.com/nadeem.swim?igsh=MXYzN2ZsZDA2MzU3cQ==" target="_blank" class="insta-float" aria-label="Follow Nadeem Swim on Instagram">
+        <svg class="insta-icon" viewBox="0 0 448 512">
+            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+        </svg>
+    </a>
+
+</body>
+</html>
